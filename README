@@ -7,3 +7,8 @@ CREATE TABLE `newseveryday`.`news`  (
   `articles` mediumtext CHARACTER SET utf8mb4 NULL,
   PRIMARY KEY (`time`)
 );
+
+[环境]
+DBUtils=1.3            # qian_bi/dbutils ==> conda install --channel https://conda.anaconda.org/qian_bi dbutils
+configparser=5.0.2
+python=3.9
