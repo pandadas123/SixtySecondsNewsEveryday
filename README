@@ -1,2 +1,9 @@
 获取“每天60秒读懂世界”的文章，并每天定时发送到指定邮箱，目前功能不够完善
 在配置文件global.conf中修改各项参数
+
+[数据库]
+CREATE TABLE `newseveryday`.`news`  (
+  `time` date NOT NULL,
+  `articles` mediumtext CHARACTER SET utf8mb4 NULL,
+  PRIMARY KEY (`time`)
+);
