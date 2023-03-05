@@ -18,7 +18,7 @@ def list2string(content_list: list) -> str:
     :param content_list: 列表形式的文章内容
     :return: 一整个的字符串文章
     """
-    return "\n".join(content_list)  # "\n"表示分隔符为换行符
+    return "\n\n".join(content_list)  # "\n"表示分隔符为换行符
 
 
 def string2list(string: str) -> list:
