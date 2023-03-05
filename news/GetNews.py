@@ -36,21 +36,6 @@ def regex_match(contents: str) -> list:
     return contents_ascii[2:]  # 截去没用的部分
 
 
-def ascii_replace(contents: list) -> list:
-    """
-    将带有ASCII码的内容转化为utf-8
-    :param contents: 内容列表
-    :return: 转化后的列表
-    """
-    match = []
-    match_ascii = re.compile(r"&#(\d+);")  # 匹配ASCII码
-    for item in contents:                  # 对每一条进行转换
-        match_final = re.sub(match_ascii, Utils.ascii2utf8, item)                # 将ASCII码转化为字符
-        match_utf8 = match_final.encode('utf-8').decode('unicode_escape')  # 将Unicode转化为utf8
-        match.append(match_utf8)
-    return match
-
-
 def get_news(time) -> str:
     """
     整合操作获取字符串形式的文章
@@ -62,7 +47,7 @@ def get_news(time) -> str:
     elif time == datetime.date.today():
         con_origin = get_original_content()   # 获取原始内容
         con_ascii = regex_match(con_origin)   # 正则匹配
-        news_list = ascii_replace(con_ascii)  # ASCII转化
+        news_list = Utils.ascii_replace(con_ascii)  # ASCII转化
         news_online = Utils.list2string(news_list)   # 列表转字符串
         NewsDatabase.add_article(news_online)  # 保存到数据库
         return news_online

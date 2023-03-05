@@ -12,6 +12,21 @@ def ascii2utf8(str_matched: re.Match) -> str:
     return ascii_char
 
 
+def ascii_replace(contents: list) -> list:
+    """
+    将带有ASCII码的内容转化为utf-8
+    :param contents: 内容列表
+    :return: 转化后的列表
+    """
+    match = []
+    match_ascii = re.compile(r"&#(\d+);")  # 匹配ASCII码
+    for item in contents:                  # 对每一条进行转换
+        match_final = re.sub(match_ascii, ascii2utf8, item)                # 将ASCII码转化为字符
+        match_utf8 = match_final.encode('utf-8').decode('unicode_escape')  # 将Unicode转化为utf8
+        match.append(match_utf8)
+    return match
+
+
 def list2string(content_list: list) -> str:
     """
     python列表转化为字符串，用换行符分割
